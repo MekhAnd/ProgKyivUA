@@ -30,7 +30,7 @@ public class Main {
 		System.out.println("The best margin in: "+bestMargin(productArray));
 		
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Point the changes in price in percentages:");
+		System.out.println("Point the changes in price, in percentages:");
 		double precents = sc.nextDouble();
 		
 		setSaleOutPrice(precents, productArray);
@@ -40,7 +40,7 @@ public class Main {
 		}
 		
 		System.out.println();
-		System.out.println("The besr margin in: "+bestMargin(productArray));
+		System.out.println("The best margin in: "+bestMargin(productArray));
 		sc.close();
 		
 	}
