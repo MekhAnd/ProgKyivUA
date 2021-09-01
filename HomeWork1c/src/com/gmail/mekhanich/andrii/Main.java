@@ -9,16 +9,17 @@ public class Main {
 		Phone three = new Phone(100003, "John Gray");
 		Phone four = new Phone(100004, "Green Gray");
 		Phone five = new Phone(100005, "Green Gray");
-		Phone six = new Phone(100006, "Katerina Mekhanich");
+		Phone six = new Phone(100006, "One, One");
+		Phone myPhone= new Phone(100008, "One, One");
 		
 		Network firstMobyle = new Network("FM");
 		
 		firstMobyle.setRegistration(one);
-		firstMobyle.setRegistration(two);
-		firstMobyle.setRegistration(three);
+		firstMobyle.setRegistration(five);
+		firstMobyle.setRegistration(myPhone);
 		
 		
-		Phone.outgoingCall(five, one);
+		myPhone.outgoingCall(five);
 	}
 
 }

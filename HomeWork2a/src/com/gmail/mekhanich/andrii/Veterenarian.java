@@ -1,7 +1,7 @@
 package com.gmail.mekhanich.andrii;
 
 public class Veterenarian {
-	String name;
+	private String name;
 
 	public Veterenarian(String name) {
 		super();

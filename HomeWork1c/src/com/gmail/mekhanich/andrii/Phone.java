@@ -35,12 +35,12 @@ public class Phone {
 		return "Phone [number=" + number + ", customerName=" + customerName + "]";
 	}
 	
-	public static boolean outgoingCall (Phone numberCall, Phone numberAccept) {
+	public boolean outgoingCall (Phone numberAccept) {
 		boolean permit = false;
-		if (Network.getRegistration(numberCall) == true) {
+		if (Network.getRegistration(this) == true) {
 			if (Network.getRegistration(numberAccept)) {
 				permit = true;
-				incomingCall(permit, numberAccept, numberCall);
+				incomingCall(permit, numberAccept, this);
 				return permit;
 				} else {
 				System.out.println("The number " + numberAccept + " was not registrated on network");
@@ -51,7 +51,7 @@ public class Phone {
 		return permit;
 	}
 	
-	public static void incomingCall (boolean permit, Phone numberAccept, Phone numberCall) {
+	public void incomingCall (boolean permit, Phone numberAccept, Phone numberCall) {
 		if (permit == true) {
 		System.out.println("The abonent number " + numberAccept + " has new incoming call from abonent number " + numberCall);
 		} else {

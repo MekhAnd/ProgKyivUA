@@ -26,7 +26,7 @@ public class Network {
 		return "Network [name=" + name + "]";
 	}
 
-	public static String setRegistration(Phone number) {
+	public String setRegistration(Phone number) {
 		String registration = "";
 		for (int i = 0; i < numbers.length; i++) {
 			if (numbers[i] == null) {
