@@ -35,29 +35,24 @@ public class Phone {
 		return "Phone [number=" + number + ", customerName=" + customerName + "]";
 	}
 	
-	public boolean outgoingCall (Phone numberAccept) {
-		boolean permit = false;
-		if (Network.getRegistration(this) == true) {
-			if (Network.getRegistration(numberAccept)) {
-				permit = true;
-				incomingCall(permit, numberAccept, this);
-				return permit;
+	public void outgoingCall (int a) {
+		if (Network.getRegistration(this.number) == true) {
+			if (Network.getRegistration(a) == true) {
+				System.out.println("Call subscriber " + a);
 				} else {
-				System.out.println("The number " + numberAccept + " was not registrated on network");
-			}
+					System.out.println("The number " + a + " was not registrated on network");
+				}
 		} else {
-		System.out.println("Your number was not registered on the network.");
+			System.out.println("Your number was not registered on the network.");
 		}
-		return permit;
 	}
 	
-	public void incomingCall (boolean permit, Phone numberAccept, Phone numberCall) {
-		if (permit == true) {
-		System.out.println("The abonent number " + numberAccept + " has new incoming call from abonent number " + numberCall);
-		} else {
-		System.out.println("Please be informed that all call in network is possible only after registration on phones in this network");
+	public void incomingCall (int a) {
+		if (Network.getRegistration(this.number) == true) {
+			System.out.println("You have incoming call from " + a);
+			} else {
+				System.out.println("Your number was not registered on the network.");
 		}
-		
 	}
-
+	
 }

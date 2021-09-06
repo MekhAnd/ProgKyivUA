@@ -39,9 +39,9 @@ public class Network {
 		return registration;
 	}
 	
-	public static boolean getRegistration (Phone number) {
+	public static boolean getRegistration (int a) {
 		for (int i = 0; i < numbers.length; i++) {
-			if (numbers[i] != null && numbers[i].getNumber() == number.getNumber()) {
+			if (numbers[i] != null && numbers[i].getNumber() == a) {
 				return true;
 			}
 		}
