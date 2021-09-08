@@ -26,7 +26,7 @@ public class Main {
 		int a = sc.nextInt(); 
 		
 		myPhone.outgoingCall(a);
-		myPhone.incomingCall(a);
+		
 	}
 
 }

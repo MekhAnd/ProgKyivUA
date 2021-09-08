@@ -48,7 +48,22 @@ public class Network {
 		
 		return false;
 	}
+	
+	public void connection (int a, int b) {
+		if (getRegistration(a) == true) {
+			System.out.println("Connecting with " + a);
+			for (int i=0; i < numbers.length; i++) {
+				if (numbers[i] != null && numbers[i].getNumber() == a) {
+					numbers[i].incomingCall(b);
+				}
+			}
+		} else {
+				System.out.println("This number was not registered on the network.");
+		}
+	}
 
+	
+	
 	
 }
 

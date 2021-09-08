@@ -37,22 +37,19 @@ public class Phone {
 	
 	public void outgoingCall (int a) {
 		if (Network.getRegistration(this.number) == true) {
-			if (Network.getRegistration(a) == true) {
-				System.out.println("Call subscriber " + a);
-				} else {
-					System.out.println("The number " + a + " was not registrated on network");
-				}
-		} else {
+			int b = this.number; 
+			System.out.println("Call to subscriber " + a);
+			Network network = new Network(null);
+			network.connection(a, b);
+			} else {
 			System.out.println("Your number was not registered on the network.");
 		}
 	}
 	
 	public void incomingCall (int a) {
-		if (Network.getRegistration(this.number) == true) {
-			System.out.println("You have incoming call from " + a);
-			} else {
-				System.out.println("Your number was not registered on the network.");
-		}
+		
+		System.out.println("You have incoming call from abonent " + a);
+		
 	}
 	
 }
