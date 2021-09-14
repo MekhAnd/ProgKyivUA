@@ -24,7 +24,7 @@ public class Main {
 		one.addStudents(st1);
 		one.addStudents(st2);
 		one.addStudents(st3);
-		one.addStudents(st4);
+		/*one.addStudents(st4);
 		one.addStudents(st5);
 		one.addStudents(st6);
 		one.addStudents(st7);
@@ -32,16 +32,16 @@ public class Main {
 		one.addStudents(st9);
 		one.addStudents(st10);
 		one.addStudents(st11);
-		one.addStudents(st12);
+		one.addStudents(st12);*/
 			} catch (ThisProgException e) {
 			System.out.println(e);
 		}
 		
 		
-		one.srchStudents("Ivanov");
+		one.srchStudents("Mal");
 		
 		
-		one.delStudents("Ivanov");
+		one.delStudents("Mal");
 		
 		
 		
