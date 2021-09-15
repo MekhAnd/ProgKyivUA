@@ -1,6 +1,8 @@
 package com.gmail.mekhanich.andrii;
 
+
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class Group {
 
@@ -47,7 +49,6 @@ public class Group {
 			}
 			break;
 		}
-
 	}
 
 	public void delStudents(String lastName) {
@@ -57,14 +58,10 @@ public class Group {
 					students[i] = null;
 					System.out.println("This " + lastName + " student was successfully delete from!");
 					break;
-				} //else {
-					//System.out.println("There is no any students with this last name -" + lastName + "!");
-				//} 
-			}
-			
-			
+				} 
+			}			
 		}
-		System.out.println("There is no any students with this last name -" + lastName + "!");
+		
 	}
 
 	public Student srchStudents(String lastName) {
@@ -77,16 +74,22 @@ public class Group {
 					break;
 				}
 			} 
-		
+			
 		}
-		System.out.println("There is no any students with this last name -" + lastName + "!");
+		if (srch.getLastName()==null) {
+			System.out.println("Are you lokking for "+ lastName + "? There is no any students with this last name - " + lastName + "!");
+		} else {
+			System.out.println(srch);
+		}
 		return srch;
 
 	}
 
 	public Student[] sorter() {
 
-		String[] temp = new String[students.length];
+		Arrays.sort(students, Comparator.nullsLast(new StudentLastNameComaprator()));
+		
+		/*String[] temp = new String[students.length];
 		for (int i = 0; i < temp.length; i++) {
 			if (students[i] != null) {
 				temp[i] = students[i].getLastName();
@@ -94,7 +97,6 @@ public class Group {
 				temp[i] = "";
 			}
 		}
-		Arrays.sort(temp);
 		for (int j = 0; j < temp.length; j++)
 			for (int i = 0; i < students.length; i++) {
 				if (students[i] != null && temp[j] == students[i].getLastName()) {
@@ -103,8 +105,10 @@ public class Group {
 					students[j] = students[i];
 					students[i] = t;
 				}
-			}
+			}*/
 
 		return students;
 	}
+	
+	
 }

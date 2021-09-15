@@ -1,6 +1,8 @@
 package com.gmail.mekhanich.andrii;
 
-public class Student extends Human  {
+import java.util.Arrays;
+
+public class Student extends Human implements CSVConverter  {
 	
 	private String univer;
 
@@ -25,6 +27,21 @@ public class Student extends Human  {
 	public String toString() {
 		return "This Human ["+ getName() +" " +getLastName() + " is the Student of [univer=" + univer + "]" + "("+getAge() + " y.o., " + getGender() + ")]";
 	}
+	
+	@Override
+	public String toCSVString() {
+		return getName() + ";" + getLastName() + ";" + getGender() + ";" + getAge() + ";" + getUniver();
+	}
+	
+	@Override
+	public Student fromCSVString (String str) {
+	 String [] newCSVStud = str.split(";");	
+	 System.out.println(Arrays.toString(newCSVStud));
+	 Student student = new Student(newCSVStud[0], newCSVStud[1], newCSVStud[2], Integer.parseInt(newCSVStud[3]), newCSVStud[4]);
+	 System.out.println(student);
+	 return student;
+	}
+	
 	
 	
 	
