@@ -40,62 +40,58 @@ public class FileCompareByWords {
 		this.b = b;
 	}
 	
-	public boolean chkr (File file) {					//check method to understand
+	//check method to understand is this file or link
+	public boolean chkr (File file) throws IsNotFileExeption {					
 		boolean status = false;
 		if (file.isFile()) {
 			status = true;
+		} else {
+			System.out.println("Your link does not point to a file! + [" + file.toString() + "] Check this link!");
+			throw new IsNotFileExeption();
 		}
 		return status;
 	}
 	
-	public String [] ar (File file) {
+	//filling array from file
+	public String [] ar (File file) throws IsNotFileExeption, IOException {			
 		String text ="";
 		String result = "";
-		if (chkr(file)) {
 		try (BufferedReader br = new BufferedReader(new FileReader(file));) {
+			if(chkr(file)) {	
 				for (;(text = br.readLine())!=null;) {
 					result += text;
-					result += " ";
-				}
+						result += " ";
+					}
+				} throw new IsNotFileExeption();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+					e.printStackTrace();
 			}	
 		String [] ar = result.split(" ");
-		return ar;
-		} else {
-			System.out.println("Your link does not point to a file! Empty array was created and return! [" + file.toString() + "] Check this link!");
-			String [] ar = new String[1];
-			
-			return ar;
-		}
-				
+		return ar;				
 	}
 	
+	//search same words
 	public String srchResult (String [] a, String [] b) {
 		String result = "";
-		try {
-			for (int i = 0; i < a.length; i++) {
-				for (int j = 0; j < b.length; j++) {
-					if (a[i].equals(b[j])) {
-						result += a[i]+ ";";
-						break;
-					}
+		for (int i = 0; i < a.length; i++) {
+			for (int j = 0; j < b.length; j++) {
+				if (a[i].equals(b[j])) {
+					result += a[i]+ ";";
+					break;
 				}
 			}
-		} catch (NullPointerException e) {
-				System.out.println("At list one of your array is empty! \n" + e);
 		}
-			
+				
 		return result;
 	}
 	
+	//write result to the file
 	public void writerCSV (String a) {
 		File result = new File(".");
 		try (PrintWriter pw = new PrintWriter("result.csv")) {
 			pw.print(a);
 			System.out.println("Have done!");
-		} catch (Exception e) {
+		} catch (IOException e) {
 			// TODO: handle exception
 		}
 	}

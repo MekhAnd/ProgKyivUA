@@ -1,6 +1,7 @@
 package com.gmail.mekhanich.andrii;
 
 import java.io.File;
+import java.io.IOException;
 
 public class Main {
 
@@ -9,8 +10,15 @@ public class Main {
 		File test = new File("M:\\My new documents\\");
 		File testOne = new File("M:\\My new documents\\defaultpi_1212.txt");
 		FileCompareByWords first = new FileCompareByWords(test, testOne);
-		first.writerCSV(first.srchResult(first.ar(test), first.ar(testOne)));
 		
+		try {
+		first.writerCSV(first.srchResult(first.ar(test), first.ar(testOne)));
+		} catch (IsNotFileExeption e) {
+			System.out.println(e);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 
 	}
