@@ -37,10 +37,11 @@ public class Student extends Human implements CSVConverter  {
 	public Student fromCSVString (String str) {
 	 String [] newCSVStud = str.split(";");	
 	 System.out.println(Arrays.toString(newCSVStud));
-	 Student student = new Student(newCSVStud[0], newCSVStud[1], newCSVStud[2], Integer.parseInt(newCSVStud[3]), newCSVStud[4]);
+	 Student student = new Student(newCSVStud[0], newCSVStud[1], newCSVStud[2], Integer.parseInt(newCSVStud[3].trim()), newCSVStud[4]);
 	 System.out.println(student);
 	 return student;
 	}
+	
 	
 	
 	

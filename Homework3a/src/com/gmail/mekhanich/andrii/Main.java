@@ -1,11 +1,17 @@
 package com.gmail.mekhanich.andrii;
 
+import java.io.File;
+import java.io.IOException;
+
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ThisProgException {
 		Group one = new Group();
+		Group two = new Group();
+		File group = new File ("G:\\Java_OOP_WorkSpace\\HomeWork\\ProgKyivUA\\Homework3a\\src\\com\\gmail\\mekhanich\\andrii\\group.csv");
+		File groupOne = new File ("G:\\Java_OOP_WorkSpace\\HomeWork\\ProgKyivUA\\Homework3a\\src\\com\\gmail\\mekhanich\\andrii\\groupOne.csv");
 		
-		KeyboardReader kb = new KeyboardReader();
+		/*KeyboardReader kb = new KeyboardReader();
 		// Initialize st0 with KeyboardReader 
 		Student st0 = kb.setNewStudent();
 		
@@ -20,18 +26,34 @@ public class Main {
 		Student st9 = new Student("Irina", "Tpr", "female", 18, "ZUNU");
 		Student st10 = new Student("Galina", "Duck", "female", 18, "ZUNU");
 		Student st11 = new Student("Nata", "Shlak", "female", 18, "ZUNU");
+		Student st12 = new Student("Tasha", "Mal", "female", 18, "ZUNU");*/
 		Student st12 = new Student("Tasha", "Mal", "female", 18, "ZUNU");
+		Student st11 = new Student("Nata", "Shlak", "female", 18, "ZUNU");
+		Student st10 = new Student("Galina", "Duck", "female", 18, "ZUNU");
+		Student st9 = new Student("Irina", "Tpr", "female", 18, "ZUNU");
+		Student st8 = new Student("Katerina", "Knur", "female", 18, "ZUNU");
 		
-		try {
-		one.addStudents(st0);
-		// Add new student to group with KeyboardReader
-		one.addStudents(kb.setNewStudent());
-			} catch (ThisProgException e) {
-			System.out.println(e);
-		}
 		System.out.println();
 		
-		//Search and Delete student with setSrchDelQuery
+		try {
+			one.addStudents(st8);
+			one.addStudents(st9);
+			one.addStudents(st10);
+			one.addStudents(st11);
+			one.addStudents(st12);
+			
+		} catch (ThisProgException e) {
+			System.out.println(e);
+		}
+		
+		try {
+			one.writerCSV(one, groupOne);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e);
+		}
+		
+		/*//Search and Delete student with setSrchDelQuery
 		//Search
 		one.srchStudents(kb.setSrchDelQuery());
 		System.out.println();
@@ -47,7 +69,22 @@ public class Main {
 		Student st13 = new Student(null, null, null, 0, null); 
 		st13 = st13.fromCSVString(newStud);		
 		System.out.println("s13 - " + st13);
-		System.out.println(st13.toCSVString());
+		System.out.println(st13.toCSVString());*/
+		
+		
+		
+		try {
+			two.groupFromCSV(group);
+		} catch (IOException | ThisProgException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		System.out.println(two.toString());
+		
+		
+		
+		
 		
 	}
 	
