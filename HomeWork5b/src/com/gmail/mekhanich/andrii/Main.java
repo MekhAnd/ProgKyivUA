@@ -7,8 +7,8 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		File test = new File("M:\\My new documents\\");
-		File testOne = new File("M:\\My new documents\\defaultpi_1212.txt");
+		File test = new File("G:\\Java_OOP_WorkSpace\\test.txt");
+		File testOne = new File("G:\\Java_OOP_WorkSpace\\test1.txt");
 		FileCompareByWords first = new FileCompareByWords(test, testOne);
 		
 		try {

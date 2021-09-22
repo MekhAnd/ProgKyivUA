@@ -62,7 +62,7 @@ public class FileCompareByWords {
 					result += text;
 						result += " ";
 					}
-				} throw new IsNotFileExeption();
+				}
 			} catch (IOException e) {
 					e.printStackTrace();
 			}	
@@ -86,7 +86,7 @@ public class FileCompareByWords {
 	}
 	
 	//write result to the file
-	public void writerCSV (String a) {
+	public void writerCSV (String a) throws IOException {
 		File result = new File(".");
 		try (PrintWriter pw = new PrintWriter("result.csv")) {
 			pw.print(a);

@@ -8,6 +8,7 @@ public class Main {
 	public static void main(String[] args) throws ThisProgException {
 		Group one = new Group();
 		Group two = new Group();
+		
 		File group = new File ("G:\\Java_OOP_WorkSpace\\HomeWork\\ProgKyivUA\\Homework3a\\src\\com\\gmail\\mekhanich\\andrii\\group.csv");
 		File groupOne = new File ("G:\\Java_OOP_WorkSpace\\HomeWork\\ProgKyivUA\\Homework3a\\src\\com\\gmail\\mekhanich\\andrii\\groupOne.csv");
 		
@@ -52,6 +53,7 @@ public class Main {
 			// TODO Auto-generated catch block
 			System.out.println(e);
 		}
+		
 		
 		/*//Search and Delete student with setSrchDelQuery
 		//Search
