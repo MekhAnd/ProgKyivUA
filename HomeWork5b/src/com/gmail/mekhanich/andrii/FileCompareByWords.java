@@ -40,7 +40,7 @@ public class FileCompareByWords {
 		this.b = b;
 	}
 	
-	public boolean chkr (File file) {
+	public boolean chkr (File file) {					//check method to understand
 		boolean status = false;
 		if (file.isFile()) {
 			status = true;
@@ -51,7 +51,8 @@ public class FileCompareByWords {
 	public String [] ar (File file) {
 		String text ="";
 		String result = "";
-			try (BufferedReader br = new BufferedReader(new FileReader(file));) {
+		if (chkr(file)) {
+		try (BufferedReader br = new BufferedReader(new FileReader(file));) {
 				for (;(text = br.readLine())!=null;) {
 					result += text;
 					result += " ";
@@ -62,18 +63,30 @@ public class FileCompareByWords {
 			}	
 		String [] ar = result.split(" ");
 		return ar;
+		} else {
+			System.out.println("Your link does not point to a file! Empty array was created and return! [" + file.toString() + "] Check this link!");
+			String [] ar = new String[1];
+			
+			return ar;
+		}
+				
 	}
 	
 	public String srchResult (String [] a, String [] b) {
 		String result = "";
-		for (int i = 0; i < a.length; i++) {
-			for (int j = 0; j < b.length; j++) {
-				if (a[i].equals(b[j])) {
-					result += a[i]+ ";";
-					break;
+		try {
+			for (int i = 0; i < a.length; i++) {
+				for (int j = 0; j < b.length; j++) {
+					if (a[i].equals(b[j])) {
+						result += a[i]+ ";";
+						break;
+					}
 				}
 			}
+		} catch (NullPointerException e) {
+				System.out.println("At list one of your array is empty! \n" + e);
 		}
+			
 		return result;
 	}
 	
