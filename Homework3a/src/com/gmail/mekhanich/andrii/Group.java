@@ -108,8 +108,7 @@ public class Group {
 			// TODO: handle exception
 		}
 	}
-	
-	
+		
 	
 	public Group groupFromCSV (File file) throws IOException, ThisProgException {			
 		String text ="";
