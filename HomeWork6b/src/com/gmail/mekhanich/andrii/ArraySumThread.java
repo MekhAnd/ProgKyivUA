@@ -60,20 +60,7 @@ class ArraySumThread implements Runnable {
 		return "ArraySumThread [startPoint=" + startPoint + ", stopPoint=" + stopPoint + ", arLength=" + arLength + "]";
 	}
 	
-//	public static int[] arrayBuild(int arrlength) {
-//		int[] arr = new int[arrlength];
-//		for (int i = 0; i < arr.length; i++) {
-//			arr[i] = (int) (Math.random() * 10);
-//		}
-//		System.out.println(Arrays.toString(arr));
-//		return arr;
-//
-//	}
-	
-	
-	
 	public long arraySum(int startPoint, int stopPoint, int[] arr) {
-		Thread a1 = Thread.currentThread();
 		long sum = 0;
 		for (int i = startPoint; i < stopPoint; i += 1) {
 			sum += arr[i];
@@ -84,7 +71,7 @@ class ArraySumThread implements Runnable {
 	
 	public long getResult () {
 		this.res = res + arraySum(startPoint, stopPoint, arLength);
-		//System.out.println(res);
+		System.out.println(res + " результат добавлен");
 		return res;
 	}
 	

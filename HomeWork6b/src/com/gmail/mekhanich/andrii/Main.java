@@ -2,16 +2,16 @@ package com.gmail.mekhanich.andrii;
 
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
-import java.util.Iterator;
+
 
 public class Main {
 
 	public static void main(String[] args) {
 
-		int length = 10000;
+		int length = 100;
 		long sum = 0;
 		long sumBase = 0;
-		int threads = 8;
+		int threads = 4;
 
 		int[] arr = new int[length];
 		for (int i = 0; i < arr.length; i++) {
@@ -46,9 +46,10 @@ public class Main {
 		for (int i = 0; i < arTh.length; i += 1) {
 			try {
 				arTh[i].join();
-			} catch (InterruptedException e) {
+				} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
+			
 		}
 		sum = sum + ArraySumThread.getRes();
 		System.out.println(sum);
