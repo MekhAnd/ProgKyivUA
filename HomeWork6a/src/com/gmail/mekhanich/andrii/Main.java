@@ -12,19 +12,15 @@ public class Main {
 		for (int i = 2; i < arr.length; i++) {
 			arr[i] = new Thread(new FactorialThread(i));
 		}
-		
-
+	
 		for (int i = 2; i < arr.length; i++) {
 			arr[i].start();
 		}
-		
-		
+				
 		for (int i = 2; i < arr.length; i++) {
 			try {
 				arr[i].join();
-				sum += arTh[i].getRes;
-				
-			} catch (InterruptedException e) {
+				} catch (InterruptedException e) {
 				System.out.println(e);
 			}
 		}

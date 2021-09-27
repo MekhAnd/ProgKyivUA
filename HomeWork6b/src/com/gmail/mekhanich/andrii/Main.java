@@ -8,10 +8,10 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		int length = 100;
+		int length = 10;
 		long sum = 0;
 		long sumBase = 0;
-		int threads = 4;
+		int threads = 8;
 
 		int[] arr = new int[length];
 		for (int i = 0; i < arr.length; i++) {
@@ -37,6 +37,8 @@ public class Main {
 				stopPoint = stopPoint + length % threads;
 			}
 			arTh[i] = new Thread(new ArraySumThread(startPoint, stopPoint, arr));
+			arTh[i].setPriority(i+1);
+			//System.out.println(arTh[i].getPriority());
 		}
 		
 		
@@ -53,7 +55,7 @@ public class Main {
 			}
 			
 		}
-		sum = sum + ArraySumThread.getRes();
+		sum =sum + ArraySumThread.getRes();
 		System.out.println(sum);
 		
 		long stopTimer2 = System.currentTimeMillis();

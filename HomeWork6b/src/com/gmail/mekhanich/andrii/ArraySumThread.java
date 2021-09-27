@@ -70,7 +70,7 @@ class ArraySumThread implements Runnable {
 	}
 	
 	public long getResult () {
-		this.res = res + arraySum(startPoint, stopPoint, arLength);
+		this.res += arraySum(startPoint, stopPoint, arLength);
 		System.out.println(res + " результат добавлен");
 		return res;
 	}
