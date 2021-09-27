@@ -38,6 +38,8 @@ public class Main {
 			}
 			arTh[i] = new Thread(new ArraySumThread(startPoint, stopPoint, arr));
 		}
+		
+		
 		long startTimer2 = System.currentTimeMillis();
 		for (int i = 0; i < arTh.length; i += 1) {
 			arTh[i].start();
