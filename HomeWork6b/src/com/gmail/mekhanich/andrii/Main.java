@@ -1,68 +1,67 @@
 package com.gmail.mekhanich.andrii;
 
-import java.text.SimpleDateFormat;
 import java.util.Arrays;
-
 
 public class Main {
 
 	public static void main(String[] args) {
-
-		int length = 10;
-		long sum = 0;
-		long sumBase = 0;
+		
+		int length = 200_000_000;
 		int threads = 8;
-
-		int[] arr = new int[length];
-		for (int i = 0; i < arr.length; i++) {
-			arr[i] = (int) (Math.random() * 10);
-		}
-		System.out.println(Arrays.toString(arr));
-
-		long startTimer1 = System.currentTimeMillis();
-		for (int i = 0; i < arr.length; i += 1) {
-			sumBase += arr[i];
-		}
-		System.out.println(sumBase);
+		int [] array = new int [length];
 		
-		long stopTimer1 = System.currentTimeMillis();
-		long timerRes1 = stopTimer1 - startTimer1;
-
+		long fillStart = System.currentTimeMillis();
+		for (int i = 0; i < array.length; i++) {
+			array[i] = (int)(Math.random()*10);
+		}
+		long fillStop = System.currentTimeMillis();
+		long arrayF = fillStop - fillStart;
 		
-		Thread[] arTh = new Thread[threads];
-		for (int i = 0; i < arTh.length; i += 1) {
-			int startPoint = (length / threads) * i;
-			int stopPoint = (length / threads) * (i + 1);
+		
+		long usualStart = System.currentTimeMillis();
+		ArrayCalculation a = new ArrayCalculation(array, 0, length);
+		System.out.println(a.arraySum(array));
+		long usualStop = System.currentTimeMillis();
+		long usual = usualStop - usualStart;
+		
+		
+		
+		long threadsStart = System.currentTimeMillis();
+		SumThreads [] threadArray = new SumThreads [threads];
+		for (int i = 0; i < threadArray.length; i++) {
+			int start = (length / threads)*i;
+			int stop = (length / threads) * (i + 1);
 			if (length % threads != 0 && i == (threads - 1)) {
-				stopPoint = stopPoint + length % threads;
+				stop = stop + length % threads;
 			}
-			arTh[i] = new Thread(new ArraySumThread(startPoint, stopPoint, arr));
-			arTh[i].setPriority(i+1);
-			//System.out.println(arTh[i].getPriority());
-		}
-		
-		
-		long startTimer2 = System.currentTimeMillis();
-		for (int i = 0; i < arTh.length; i += 1) {
-			arTh[i].start();
-		}
-
-		for (int i = 0; i < arTh.length; i += 1) {
-			try {
-				arTh[i].join();
-				} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+			threadArray[i] = new SumThreads(array, start, stop);
 			
 		}
-		sum =sum + ArraySumThread.getRes();
+	
+		for (int i = 0; i < threadArray.length; i++) {
+			threadArray[i].getA().start();
+			}
+		
+		long sum = 0;
+		for (int i = 0; i < threadArray.length; i++) {
+			try {
+				threadArray[i].getA().join();
+				System.out.println(threadArray[i].getA().getName() + " = " +threadArray[i].summ());
+				sum += threadArray[i].summ();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
 		System.out.println(sum);
+		long threadsStop = System.currentTimeMillis();
+		long threadT = threadsStop - threadsStart;
 		
-		long stopTimer2 = System.currentTimeMillis();
-		long timerRes2 = stopTimer2 - startTimer2;
 		
-		System.out.println("Array length " + length + " threads -" + threads +  ".\nUsual culculating res ="+ timerRes1 + "  VS  culculating with multi threads =" + timerRes2);
+		System.out.println("Array filling = " + arrayF);
+		System.out.println("Usual calculating  = " + usual);
 		
+		System.out.println("Calculating with "+ threads +" threads = " + threadT);
+		System.out.println("Arrays parametrs - " + array.length);
 	}
 
 }

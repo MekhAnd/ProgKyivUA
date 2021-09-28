@@ -53,6 +53,7 @@ public class FileOperations {
 	}
 	
 	public static void fileCopy(File in, File out, int start, int stop) throws IOException {
+		Thread ath=Thread.currentThread();
 		byte [] buf = new byte [1024*1024];
 		int readByte = 0;
 		File [] list = in.listFiles();
@@ -67,6 +68,7 @@ public class FileOperations {
 						throw e;
 					}
 			}
+			System.out.println(ath);
 	}
 
 }

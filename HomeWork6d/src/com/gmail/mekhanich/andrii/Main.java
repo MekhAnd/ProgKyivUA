@@ -20,10 +20,13 @@ public class Main {
 				stopPoint = stopPoint + (in.list()).length % threads;
 			}
 			a[i] = new Thread(new CopyThreads(in, out, startPoint, stopPoint));
+			
 		}
 		
 		for (int i = 0; i < a.length; i++) {
 			a[i].start();
+			
+			
 		}
 			
 		for (int i = 0; i < a.length; i++) {

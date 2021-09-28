@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class Main {
 
 	public static void main(String[] args) {
-		int length = 100;
+		int length = 40;
 		int threads = 4;
 		
 		int[] arr = new int[length];
