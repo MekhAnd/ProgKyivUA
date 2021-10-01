@@ -9,7 +9,7 @@ public class FileOperations {
 
 	private File a;
 	private File b;
-	private static File [] list;
+	private File [] list;
 
 	public FileOperations() {
 		super();
@@ -43,9 +43,9 @@ public class FileOperations {
 		return "FileOperations [a=" + a + ", b=" + b + "]";
 	}
 	
-	public static File [] setList (File a) {
+	public File [] setList (File a) {
 		if(a.isDirectory()) {
-			list = a.listFiles();
+			this.list = a.listFiles();
 		} else {
 			System.out.println("Incorrect input - this is not folder!");
 		}

@@ -9,8 +9,8 @@ public class Main {
 		
 		int threads = 4;
 		
-		File in = new File ("J:\\PHP\\");
-		File out = new File ("G:\\temp\\");
+		File in = new File ("J:\\EnglishDom\\Intermediate\\");
+		File out = new File ("J:\\English2\\");
 		
 		Thread [] a = new Thread[threads];
 		for (int i = 0; i < a.length; i++) {
